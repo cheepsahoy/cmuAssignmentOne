@@ -13,13 +13,22 @@ Theoretically instructor can run on all the big models, but this thing was only 
 ## Running and WorkFlow
 The automateRisk component requires a human-in-the-loop at each stage to look through and verify the ML's output. You can add your own as long as you comport to the structure of the output (read the output / read `utils/schemas.py` to learn more), but its probably safest just to delete.
 
-From project root run:
+(1) Generating Stakeholders: from project root run:
 
 `python -m src.automateRisk.generateStakeholders`
 
 This will generate a file called `generatedStakeholderList.json` in `src/modelOutputs`. Inspect the output.
 
-Then, from root, run:
-` ython -m src.automateRisk.analyzeStakeholders`
+(2) Analyzing Loss and Values: then, from root, run:
+`python -m src.automateRisk.analyzeStakeholders`
 
 This will generate a file called `stakeholderRiskAnalysis.json` in `src/modelOutputs`. Inspect the output.
+
+(3) Establishing RSA Pairings: from root, run
+`python -m src.automateRisk.generateAssumptionsAndSpecs`
+
+This will generate a file called `requirementAnalysis.json` in `src/modelOutputs`. Output at this point is pretty extensive and likely hard to read. To simplify things
+
+(4) Generate a Useable Report: from root, run: 
+
+`python -m src.automateRisk.generateReport`
