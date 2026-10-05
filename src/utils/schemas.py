@@ -86,6 +86,18 @@ class AssumptionSpecificationPair(BaseModel):
 class RequirementAnalysis(BaseModel):
     analyses: list[AssumptionSpecificationPair] = Field(
         min_length=3,
-        max_length=10,
-        description="Between 3 and 10 assumption/specification pairs for the requirement. Each specification should rely on its associated environmental assumption.",
+        max_length=5,
+        description="Between 3 and 5 assumption/specification pairs for the requirement. Each specification should rely on its associated environmental assumption.",
     )
+
+
+class RequirementAnalysisResult(BaseModel):
+    stakeholder: Stakeholder
+    goal: str
+    loss: str
+    requirement: Requirement
+    analysis: RequirementAnalysis
+
+
+class RequirementAnalysisReport(BaseModel):
+    requirements: list[RequirementAnalysisResult]

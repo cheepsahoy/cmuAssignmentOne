@@ -10,6 +10,7 @@ T = TypeVar("T", bound=BaseModel)
 OUTPUT_DIR = Path(__file__).resolve().parent.parent / "modelOutputs"
 
 
+## Saving data
 def saveStructuredOutput(output: BaseModel, filename: str) -> Path:
     """
     Saves a Pydantic model as JSON in src/modelOutputs.
@@ -35,6 +36,26 @@ def saveStructuredOutput(output: BaseModel, filename: str) -> Path:
     )
 
     return filePath
+
+
+def saveTextOutput(content: str, filename: str) -> Path:
+    """
+    Saves plain text or Markdown output in src/modelOutputs.
+    """
+
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    filePath = OUTPUT_DIR / filename
+
+    filePath.write_text(
+        content,
+        encoding="utf-8",
+    )
+
+    return filePath
+
+
+## Absorbing data
 
 
 def loadStructuredOutput(filename: str, modelType: type[T]) -> T:
