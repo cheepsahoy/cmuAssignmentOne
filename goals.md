@@ -38,14 +38,44 @@ Goal_5: Function accross distinct dashcam models.
 
 Goal_6: Prevent unauthorized searches for people not reported missing. 
 
+Goal_7: Be able to run the model locally with high degree of accuracy.
+
 ## User Goals
 # Direct User (Direct)
 Goal: Avoid excessive/expensive battery and data usage. 
 
 # Bystanders (Indirect)
 Goal: Not be falsely identified as the missing person.
+Measure: Calculate the number of people falsley identified in ways that impede their day.
+Data: (1) False identifications from our model, coupled with (2) Number of police stops / querries on those false cases
+Operationalization: Calculate the intersection between: (1) False ID's by the model, that produced (2) Actionable stops by police, only later to be (3) found to be improper. Report the raw number. 
 
 # Authorities (Indirect)
 Goal: Recieve timely, credible, actionable sightings 
 
 ## Model Goals
+Goal_01: Correctly identify missing children.
+
+Goal_02: Avoid false positives of bystanders.
+
+Goal_03: Maintain effectiveness accross genders
+
+Goal_04: Maintain effectiveness accross racial groups.
+Measurement: Differences in model effectiveness compared accross racial groups.
+Data: Test data of children in same age and gender conditions, differentiated by race (East Asian, South Asian, White, Black, Latino, Indigenous).
+Operationalization: Calculate both recall and precision accross each racial group in each of the test samples.
+
+Goal_05: Maintain effectiveness in low-light circumstances.
+
+Goal_06: Maintain effectiveness in obscured-vision circumstances (e.g., behind a window, smudge, etc.).
+
+Goal_07: Be compact enough to operate within the dashcam's constraints. 
+
+Goal_08: Produce inferences fast enough to be actionable.
+## Goal Relationships
+Many goals are complimentary, some examples:
+System_Goal_02, Authories_Goal, Bystanders_Goal, and Model_Goal_01 all want valid identifications with low false positive rates.
+
+Org_Goal_02 and Org_Goal_03 are complimentary because if the product works, then more sales means the product is doing more good. These benefits fit with Authorites_Goal by ensuring greater user-buy-in and help in missing person cases.
+
+Org_goal_05 and Model_Goal_04 are relevent as racial bias in our model and its use cases can cause friction with prominent civil rights organziations (e.g., ACLU, or NAACP). 
