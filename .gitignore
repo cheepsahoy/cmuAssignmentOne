@@ -16,3 +16,6 @@ venv/
 # Build artifacts
 build/
 dist/
+
+#data
+modelOutputs/

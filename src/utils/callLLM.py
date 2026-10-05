@@ -46,6 +46,7 @@ async def callLLM(prompt: str, responseModel: type[BaseModel]) -> BaseModel:
     """
     response = await client.create(
         response_model=responseModel,
+        reasoning_effort="none",
         messages=[
             {"role": "system", "content": CONTEXT},
             {"role": "user", "content": prompt},

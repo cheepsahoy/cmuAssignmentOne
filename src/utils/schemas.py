@@ -55,6 +55,16 @@ class StakeholderRiskAnalysis(BaseModel):
     )
 
 
+## for data
+class StakeholderRiskResult(BaseModel):
+    stakeholder: Stakeholder
+    analysis: StakeholderRiskAnalysis
+
+
+class StakeholderRiskReport(BaseModel):
+    stakeholders: list[StakeholderRiskResult]
+
+
 ## Analyzing Requirements
 class Assumption(BaseModel):
     description: str = Field(
