@@ -1,5 +1,5 @@
 ## Problem Description
-We are developing a feature for dashcams that dashcam footage to locate children reported missing. We need to ensure that t
+We are developing a feature for dashcams that uses dashcam footage to locate children reported missing.
 
 ## System Considerations
 --Dashcams don't have internet access, but can communicate over USB, Bluetooth or Wifi with phones, cars, and wifi-hotspots.
@@ -54,28 +54,23 @@ Operationalization: Calculate the intersection between: (1) False ID's by the mo
 Goal: Recieve timely, credible, actionable sightings 
 
 ## Model Goals
-Goal_01: Correctly identify missing children.
+Goal_1: Correctly identify missing children.
 
-Goal_02: Avoid false positives of bystanders.
+Goal_2: Avoid false positives of bystanders.
 
-Goal_03: Maintain effectiveness accross genders
+Goal_3: Maintain effectiveness accross genders
 
-Goal_04: Maintain effectiveness accross racial groups.
+Goal_4: Maintain effectiveness accross racial/ethnic groups.
 Measurement: Differences in model effectiveness compared accross racial groups.
 Data: Test data of children in same age and gender conditions, differentiated by race (East Asian, South Asian, White, Black, Latino, Indigenous).
 Operationalization: Calculate both recall and precision accross each racial group in each of the test samples.
 
-Goal_05: Maintain effectiveness in low-light circumstances.
+Goal_5: Maintain effectiveness in low-light circumstances.
 
-Goal_06: Maintain effectiveness in obscured-vision circumstances (e.g., behind a window, smudge, etc.).
+Goal_6: Maintain effectiveness in obscured-vision circumstances (e.g., behind a window, smudge, etc.).
 
-Goal_07: Be compact enough to operate within the dashcam's constraints. 
-
-Goal_08: Produce inferences fast enough to be actionable.
+Goal_7: Produce inferences fast enough to be of use. 
 ## Goal Relationships
-Many goals are complimentary, some examples:
-System_Goal_02, Authories_Goal, Bystanders_Goal, and Model_Goal_01 all want valid identifications with low false positive rates.
+Many goals work together, some examples: System_Goal_2, Authories_Goal, Bystanders_Goal, and Model_Goal_1 all want valid identifications with low false positive rates. Org_Goal_2 and Org_Goal_3 are complimentary because if the product works, then more sales means the product is doing more good. These benefits fit with authorities_goal by ensuring greater user-buy-in and help in missing person cases. Org_goal_5 and Model_Goal_4 are relevent as racial bias in our model and its use cases can cause friction with prominent civil rights organziations.
 
-Org_Goal_02 and Org_Goal_03 are complimentary because if the product works, then more sales means the product is doing more good. These benefits fit with Authorites_Goal by ensuring greater user-buy-in and help in missing person cases.
-
-Org_goal_05 and Model_Goal_04 are relevent as racial bias in our model and its use cases can cause friction with prominent civil rights organziations (e.g., ACLU, or NAACP). 
+At the same time, there can also be tensions between the goals: not every user that wants to use the dashcam may care about the feature. The ties we built with organizations (org_goal_5) might cause friction with consumers. Any amount of data/battery usage might be not desired, and this can conflict with org_goal_2, and authorities_goal. The higher the model's accuracy in obscured conditions (model_goal_6) might interfere with bystander_goal because it increases the 'actionable' conditions where the model can produce inferences (thereby increasing the possibility there is a false positive). These are just some examples.
