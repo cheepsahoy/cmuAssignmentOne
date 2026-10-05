@@ -9,4 +9,7 @@ description = ""
 requires-python = ">=3.12"
 
 dependencies = [
+    "instructor>=1.17,<2",
+    "pydantic>=2,<3",
+    "python-dotenv>=1,<2",
 ]
