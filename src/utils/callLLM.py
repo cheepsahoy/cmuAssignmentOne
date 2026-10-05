@@ -17,7 +17,22 @@ if not model:
     raise ValueError("no LLM_MODEL set in .env")
 
 ## load client
-client = instructor.from_provider(f"{provider}/{model}", async_client=True)
+client = instructor.from_provider(
+    f"{provider}/{model}", api_key=apiKey, async_client=True
+)
+
+## call context
+CONTEXT = """
+## Problem Description
+We are developing a feature for dashcams that uses dashcam footage to locate children reported missing.
+
+## System Considerations
+--Dashcams don't have internet access, but can communicate over USB, Bluetooth or Wifi with phones, cars, and wifi-hotspots.
+--Dashcams are powered by the car's battery power supply.
+--Dashcam processing power varies model by model.
+--Users may be cautious about privacy and network data costs.
+--Computation may be possible on dashcam through edge computing.
+"""
 
 
 async def callLLM(prompt: str, responseModel: type[BaseModel]) -> BaseModel:
@@ -30,6 +45,10 @@ async def callLLM(prompt: str, responseModel: type[BaseModel]) -> BaseModel:
         Validated response of the selected responseModel.
     """
     response = await client.create(
-        response_model=responseModel, messages=[{"role": "user", "content": prompt}]
+        response_model=responseModel,
+        messages=[
+            {"role": "system", "content": CONTEXT},
+            {"role": "user", "content": prompt},
+        ],
     )
     return response
